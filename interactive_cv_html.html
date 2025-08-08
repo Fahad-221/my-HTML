@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>فهد النعمي - السيرة الذاتية</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+            border-radius: 20px;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            overflow: hidden;
+            animation: slideIn 1s ease-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .header {
+            background: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
+            color: white;
+            padding: 60px 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="2" fill="rgba(255,255,255,0.1)"/><circle cx="80" cy="40" r="3" fill="rgba(255,255,255,0.1)"/><circle cx="40" cy="80" r="1" fill="rgba(255,255,255,0.1)"/></svg>');
+            animation: float 20s infinite linear;
+        }
+
+        @keyframes float {
+            from { transform: translateY(0px); }
+            to { transform: translateY(-100px); }
+        }
+
+        .avatar {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            margin: 0 auto 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 60px;
+            color: white;
+            position: relative;
+            z-index: 1;
+            transition: transform 0.3s ease;
+        }
+
+        .avatar:hover {
+            transform: scale(1.1);
+        }
+
+        .name {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            font-weight: 700;
+            position: relative;
+            z-index: 1;
+        }
+
+        .title {
+            font-size: 1.3rem;
+            opacity: 0.9;
+            margin-bottom: 30px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            position: relative;
+            z-index: 1;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .contact-item:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-3px);
+        }
+
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+        }
+
+        .left-column {
+            background: #f8fafc;
+            padding: 40px;
+        }
+
+        .right-column {
+            background: white;
+            padding: 40px;
+        }
+
+        .section {
+            margin-bottom: 40px;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        .section:nth-child(1) { animation-delay: 0.2s; }
+        .section:nth-child(2) { animation-delay: 0.4s; }
+        .section:nth-child(3) { animation-delay: 0.6s; }
+        .section:nth-child(4) { animation-delay: 0.8s; }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+            color: #2d3748;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            height: 3px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            flex: 1;
+            border-radius: 2px;
+        }
+
+        .experience-item, .education-item {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            margin-bottom: 20px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+            border-right: 4px solid #667eea;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .experience-item:hover, .education-item:hover {
+            transform: translateX(-10px);
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.15);
+        }
+
+        .job-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #2d3748;
+            margin-bottom: 8px;
+        }
+
+        .company {
+            color: #667eea;
+            font-weight: 500;
+            margin-bottom: 8px;
+        }
+
+        .date {
+            color: #718096;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+
+        .responsibilities {
+            list-style: none;
+        }
+
+        .responsibilities li {
+            padding: 5px 0;
+            position: relative;
+            padding-right: 20px;
+        }
+
+        .responsibilities li::before {
+            content: '▶';
+            position: absolute;
+            right: 0;
+            color: #667eea;
+            font-size: 12px;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .skill-category {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease;
+        }
+
+        .skill-category:hover {
+            transform: translateY(-5px);
+        }
+
+        .skill-category h4 {
+            color: #2d3748;
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+
+        .skill-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 0;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .skill-item:last-child {
+            border-bottom: none;
+        }
+
+        .skill-bar {
+            width: 100px;
+            height: 6px;
+            background: #e2e8f0;
+            border-radius: 3px;
+            overflow: hidden;
+        }
+
+        .skill-progress {
+            height: 100%;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            border-radius: 3px;
+            transition: width 2s ease;
+        }
+
+        .courses-list {
+            display: grid;
+            gap: 15px;
+        }
+
+        .course-item {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            border-right: 3px solid #48bb78;
+            transition: all 0.3s ease;
+        }
+
+        .course-item:hover {
+            transform: scale(1.02);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+        }
+
+        .course-name {
+            font-weight: 600;
+            color: #2d3748;
+            margin-bottom: 5px;
+        }
+
+        .course-year {
+            color: #718096;
+            font-size: 0.9rem;
+        }
+
+        .profile-text {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+            line-height: 1.8;
+            font-size: 1.1rem;
+            color: #4a5568;
+        }
+
+        .projects-grid {
+            display: grid;
+            gap: 25px;
+        }
+
+        .project-item {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+            border-right: 4px solid #ed8936;
+            transition: all 0.3s ease;
+        }
+
+        .project-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .project-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #2d3748;
+            margin-bottom: 10px;
+        }
+
+        .print-btn {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            font-size: 20px;
+            cursor: pointer;
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .print-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 12px 35px rgba(102, 126, 234, 0.4);
+        }
+
+        @media (max-width: 768px) {
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact-info {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .name {
+                font-size: 2rem;
+            }
+            
+            .left-column, .right-column {
+                padding: 20px;
+            }
+        }
+
+        @media print {
+            body {
+                background: white !important;
+            }
+            
+            .container {
+                box-shadow: none !important;
+                border-radius: 0 !important;
+                margin: 0 !important;
+            }
+            
+            .print-btn {
+                display: none !important;
+            }
+        }
+
+        .tab-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .tab-btn {
+            background: #e2e8f0;
+            color: #4a5568;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .tab-btn.active {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            transform: scale(1.05);
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="avatar">
+                <i class="fas fa-user"></i>
+            </div>
+            <h1 class="name">فهد النعمي</h1>
+            <p class="title"> علوم الحاسب | محلل البيانات | أخصائي تقنية المعلومات</p>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <i class="fas fa-phone"></i>
+                    <span>0532219521</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <span>Fahad.alneami.1@gmail.com</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fab fa-linkedin"></i>
+                    <span>linkedin.com/in/fahad-alneami</span>
+                </div>
+            </div>
+        </header>
+
+        <div class="main-content">
+            <div class="left-column">
+                <div class="section">
+                    <h2 class="section-title">
+                        <i class="fas fa-user-circle"></i>
+                        الملف الشخصي
+                    </h2>
+                    <div class="profile-text">
+                        خريج علوم الحاسب بخبرة عملية متنوعة في تحليل البيانات والأرشفة الرقمية وتعليم تقنية المعلومات. أسعى لتطبيق التقنيات الحديثة لتقديم حلول مبتكرة وفعالة، مع شغف بالتطوير المستمر ومواكبة أحدث التطورات في مجال التقنية وعلوم البيانات.
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h2 class="section-title">
+                        <i class="fas fa-graduation-cap"></i>
+                        المؤهلات العلمية
+                    </h2>
+                    <div class="education-item">
+                        <h3 class="job-title">بكالوريوس علوم الحاسب</h3>
+                        <p class="company">جامعة جازان</p>
+                        <p class="date">2021</p>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h2 class="section-title">
+                        <i class="fas fa-certificate"></i>
+                        الشهادات والدورات
+                    </h2>
+                    <div class="courses-list">
+                        <div class="course-item">
+                            <div class="course-name">شهادة مساعد عالم البيانات</div>
+                            <div class="course-year">2025</div>
+                        </div>
+                        <div class="course-item">
+                            <div class="course-name">تحليل البيانات باستخدام Python & Pandas</div>
+                            <div class="course-year">2023</div>
+                        </div>
+                        <div class="course-item">
+                            <div class="course-name">أساسيات الأمن السيبراني</div>
+                            <div class="course-year">2021</div>
+                        </div>
+                        <div class="course-item">
+                            <div class="course-name">تحليل الأعمال باستخدام Excel</div>
+                            <div class="course-year">2021</div>
+                        </div>
+                        <div class="course-item">
+                            <div class="course-name">مطور بايثون كامل </div>
+                            <div class="course-year">مكتمل</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h2 class="section-title">
+                        <i class="fas fa-tools"></i>
+                        المهارات
+                    </h2>
+                    <div class="skills-grid">
+                        <div class="skill-category">
+                            <h4>المهارات التقنية</h4>
+                            <div class="skill-item">
+                                <span>Python</span>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="width: 90%"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <span>Power BI</span>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="width: 85%"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <span>SQL</span>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="width: 80%"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <span>Excel</span>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="width: 95%"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="skill-category">
+                            <h4>المهارات الشخصية</h4>
+                            <div class="skill-item">
+                                <span>التواصل</span>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="width: 90%"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <span>حل المشكلات</span>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="width: 85%"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <span>العمل الجماعي</span>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="width: 88%"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <span>القيادة</span>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="width: 75%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="right-column">
+                <div class="section">
+                    <h2 class="section-title">
+                        <i class="fas fa-briefcase"></i>
+                        الخبرات العملية
+                    </h2>
+                    
+                    <div class="experience-item">
+                        <h3 class="job-title">أخصائي الوثائق والمخطوطات</h3>
+                        <p class="company">مشروع وزارة الطاقة</p>
+                        <p class="date">نوفمبر 2024 – حتى الآن</p>
+                        <ul class="responsibilities">
+                            <li>رقمنة وتصنيف الوثائق الرسمية باستخدام أحدث التقنيات</li>
+                            <li>ضمان دقة البيانات الوصفية والامتثال للمعايير</li>
+                            <li>تنسيق سير عمل الحفظ الآمن للوثائق الحساسة</li>
+                            <li>تطبيق أنظمة إدارة المحتوى الرقمي المتقدمة</li>
+                        </ul>
+                    </div>
+
+                    <div class="experience-item">
+                        <h3 class="job-title">محلل البيانات</h3>
+                        <p class="company">تجربة عمل افتراضية "مسك"</p>
+                        <p class="date">2023</p>
+                        <ul class="responsibilities">
+                            <li>إجراء دراسات معمقة لتحليل سلوك المستخدمين</li>
+                            <li>بناء نماذج تنبؤية باستخدام تقنيات التعلم الآلي</li>
+                            <li>تطبيق خوارزميات التعلم الآلي لاستخراج الأنماط</li>
+                            <li>إنشاء لوحات معلومات تفاعلية لعرض البيانات</li>
+                        </ul>
+                    </div>
+
+                    <div class="experience-item">
+                        <h3 class="job-title">مدرس علوم الحاسب وتقنية المعلومات</h3>
+                        <p class="company">مدارس الفلاح الأهلية</p>
+                        <p class="date">2023</p>
+                        <ul class="responsibilities">
+                            <li>تدريس مناهج علوم الحاسب للمراحل المختلفة</li>
+                            <li>تطوير المناهج التعليمية وطرق التدريس الحديثة</li>
+                            <li>إعداد وتنفيذ الأنشطة التعليمية التفاعلية</li>
+                            <li>تقييم الطلاب ومتابعة تقدمهم الأكاديمي</li>
+                        </ul>
+                    </div>
+
+                    <div class="experience-item">
+                        <h3 class="job-title">أخصائي خدمة عملاء</h3>
+                        <p class="company">شركة ماجوريل - مشروع موبايلي</p>
+                        <p class="date">2022</p>
+                        <ul class="responsibilities">
+                            <li>تقديم خدمة عملاء متميزة عبر مركز الاتصال</li>
+                            <li>حل استفسارات ومشاكل العملاء بكفاءة عالية</li>
+                            <li>تحقيق معدلات رضا عملاء مرتفعة</li>
+                            <li>العمل في بيئة سريعة الوتيرة مع فرق متنوعة</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h2 class="section-title">
+                        <i class="fas fa-project-diagram"></i>
+                        المشاريع المهمة
+                    </h2>
+                    
+                    <div class="projects-grid">
+                        <div class="project-item">
+                            <h3 class="project-title">نظام رقمنة الوثائق - وزارة الطاقة</h3>
+                            <p class="date">2024 - مستمر</p>
+                            <p>تطبيق حلول رقمية متقدمة لأرشفة الوثائق الحكومية وتصميم قواعد بيانات منظمة للبيانات الوصفية مع تحسين كفاءة الوصول واسترجاع المعلومات.</p>
+                        </div>
+
+                        <div class="project-item">
+                            <h3 class="project-title">نموذج تحليل سلوك المستخدمين</h3>
+                            <p class="date">2023</p>
+                            <p>تطوير نماذج التعلم الآلي للتنبؤ بسلوك المستخدمين ومعالجة وتحليل مجموعات بيانات كبيرة وإنتاج تقارير وتوصيات قائمة على البيانات.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <button class="print-btn" onclick="window.print()" title="طباعة السيرة الذاتية">
+        <i class="fas fa-print"></i>
+    </button>
+
+    <script>
+        // تحريك أشرطة المهارات عند التحميل
+        window.addEventListener('load', function() {
+            const skillBars = document.querySelectorAll('.skill-progress');
+            skillBars.forEach(bar => {
+                const width = bar.style.width;
+                bar.style.width = '0%';
+                setTimeout(() => {
+                    bar.style.width = width;
+                }, 1000);
+            });
+        });
+
+        // تأثير التمرير للعناصر
+        function handleScroll() {
+            const sections = document.querySelectorAll('.section');
+            sections.forEach(section => {
+                const rect = section.getBoundingClientRect();
+                if (rect.top < window.innerHeight * 0.8) {
+                    section.style.opacity = '1';
+                    section.style.transform = 'translateY(0)';
+                }
+            });
+        }
+
+        window.addEventListener('scroll', handleScroll);
+
+        // تأثيرات إضافية للتفاعل
+        document.querySelectorAll('.experience-item, .education-item, .course-item, .project-item').forEach(item => {
+            item.addEventListener('mouseenter', function() {
+                this.style.background = '#f7fafc';
+            });
+            
+            item.addEventListener('mouseleave', function() {
+                this.style.background = 'white';
+            });
+        });
+
+        // تأثير النقر على معلومات التواصل
+        document.querySelectorAll('.contact-item').forEach(item => {
+            item.addEventListener('click', function() {
+                const text = this.querySelector('span').textContent;
+                navigator.clipboard.writeText(text).then(() => {
+                    const originalBg = this.style.background;
+                    this.style.background = 'rgba(72, 187, 120, 0.3)';
+                    setTimeout(() => {
+                        this.style.background = originalBg;
+                    }, 1000);
+                });
+            });
+        });
+
+        // تأثير كتابة متحرك للاسم
+        function typeWriter(element, text, speed = 100) {
+            let i = 0;
+            element.innerHTML = '';
+            
+            function type() {
+                if (i < text.length) {
+                    element.innerHTML += text.charAt(i);
+                    i++;
+                    setTimeout(type, speed);
+                }
+            }
+            type();
+        }
+
+        // تطبيق تأثير الكتابة على الاسم عند التحميل
+        window.addEventListener('load', function() {
+            const nameElement = document.querySelector('.name');
+            const originalText = nameElement.textContent;
+            setTimeout(() => {
+                typeWriter(nameElement, originalText, 150);
+            }, 500);
+        });
+    </script>
+</body>
+</html>
